@@ -1,6 +1,8 @@
 package it.unibo.oop.lab.anonymous1;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import it.unibo.oop.lab.socialnetwork.SocialNetworkUser;
@@ -20,7 +22,6 @@ import it.unibo.oop.lab.socialnetwork.User;
  * 
  */
 public final class TestAnonymousComparator {
-
     private TestAnonymousComparator() { }
 
     /**
@@ -42,6 +43,8 @@ public final class TestAnonymousComparator {
         }
         return true;
     }
+    
+    
 
     /**
      * @param args
@@ -78,12 +81,19 @@ public final class TestAnonymousComparator {
         /*
          * expected Result
          */
+        Collections.sort(denzelUsers,new Comparator<User>(){
+        	public int compare(User a, User b) {
+        		return a.getAge() - b.getAge();
+        	}
+        });
+        
         List<User> expectedResult = new ArrayList<>();
         expectedResult.add(pverdi);
         expectedResult.add(mrossi);
         expectedResult.add(mgladwell);
         expectedResult.add(ntaleb);
         expectedResult.add(kbacon);
+        
         System.out.println("[Order by age (increasing) Denzel friends] [TEST] [START]");
         System.out.println("[Order by age (increasing) Denzel friends] [TEST] [RESULT] "
                 + checkUserOrder(expectedResult, denzelUsers));
@@ -105,10 +115,16 @@ public final class TestAnonymousComparator {
          * NOTE: in order to sort a list think about a method of the utility
          * class Collections
          */
-        // TODO
+        Collections.sort(rossiUsers,new Comparator<User>(){
+        	public int compare(User a, User b) {
+        		return -a.getAge() + b.getAge();
+        	}
+        });
         /*
          * expected Result
          */
+        
+        
         expectedResult = new ArrayList<>();
         expectedResult.add(dwashington);
         expectedResult.add(kbacon);
@@ -119,5 +135,6 @@ public final class TestAnonymousComparator {
         System.out.println("[Order by age (decreasing) Rossi friends] [TEST] [RESULT] "
                 + checkUserOrder(expectedResult, rossiUsers));
         System.out.println("[Order by age (decreasing) Rossi friends] [TEST] [END]");
+
     }
 }
