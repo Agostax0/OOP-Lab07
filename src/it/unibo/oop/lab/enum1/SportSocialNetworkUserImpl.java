@@ -30,7 +30,7 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * 
      * add a field to keep track of the set of sports followed/done by a user
      */
-
+	private Sport favSport;
     /**
      * Builds a new {@link SportSocialNetworkUserImpl}.
      * 
@@ -78,7 +78,7 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      */
     // TODO
     public void addSport(final Sport sport) {
-
+    	this.favSport = sport;
     }
 
     /**
