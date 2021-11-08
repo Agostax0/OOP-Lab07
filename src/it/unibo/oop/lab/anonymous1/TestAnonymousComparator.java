@@ -83,7 +83,9 @@ public final class TestAnonymousComparator {
          */
         Collections.sort(denzelUsers,new Comparator<User>(){
         	public int compare(User a, User b) {
-        		return a.getAge() - b.getAge();
+        		return (a.getAge() == -1 || b.getAge() == -1) ? 
+        				(a.getAge() == -1 ? a.getAge() : a.getAge()) 
+        				: a.getAge()-b.getAge();
         	}
         });
         
@@ -115,10 +117,16 @@ public final class TestAnonymousComparator {
          * NOTE: in order to sort a list think about a method of the utility
          * class Collections
          */
+        Comparator.reverseOrder();
+        
         Collections.sort(rossiUsers,new Comparator<User>(){
+        	
         	public int compare(User a, User b) {
-        		return -a.getAge() + b.getAge();
+        		return (a.getAge() == -1 || b.getAge() == -1) ? 
+        				(a.getAge() == -1 ? a.getAge() : a.getAge()) 
+        				: a.getAge()-b.getAge();
         	}
+
         });
         /*
          * expected Result
